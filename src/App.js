@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
     // Switch will wrap the dynamic routes
     // Route will configure the specific routes and wrap the component
 import California from './components/California/California';
-import SanDiego from './components/California/SanDiego';
 import Texas from './components/Texas/Texas';
 import Florida from './components/Florida/Florida';
 import Oklahoma from './components/Oklahoma/Oklahoma';
@@ -20,7 +19,6 @@ function App () {
                     <nav>
                         <ul>
                             <li><Link to="/california">California</Link></li>
-                                <li><Link to="/sandiego">San Diego</Link></li>
                             <li><Link to="/texas">Texas</Link></li>
                             <li><Link to="/oklahoma">Oklahoma</Link></li>
                             <li><Link to="/florida">Florida</Link></li>
@@ -28,11 +26,8 @@ function App () {
                     </nav>
 
                     <Switch>
-                        <Route exact path="/california">
+                        <Route path="/california">
                             <California />
-                        </Route>
-                        <Route path="/california/:usState">
-                            <SanDiego />
                         </Route>
                         <Route path="/texas">
                             <Texas />

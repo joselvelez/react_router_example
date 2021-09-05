@@ -1,16 +1,33 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 import SanDiego from './SanDiego';
+import SanFrancisco from './SanFrancisco';
 
 function California() {
-    const { usState } = useParams();
+    const { path } = useRouteMatch();
+
+    console.log(`This is the ${path} component`);
 
     return (
         <>
-            <h2>California</h2>
-            {usState === 'sandiego' && <SanDiego />}
+            <h2>California Cities</h2>
+
+            <ul>
+                <li><Link to={`${path}/sandiego`}>San Diego</Link></li>
+                <li><Link to={`${path}/sanfranisco`}>San Francisco</Link></li>
+            </ul>
+
+            <Switch>
+                <Route path={`${path}/sandiego`}>
+                    <SanDiego />
+                </Route>
+                <Route path={`${path}/sanfranisco`}>
+                    <SanFrancisco />
+                </Route>
+            </Switch>
         </>
     );
 }
 
 export default California;
+
